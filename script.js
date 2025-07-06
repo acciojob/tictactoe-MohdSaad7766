@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Submit button click handler
     submitBtn.addEventListener('click', function() {
-        player1 = document.getElementById('player-1').value.trim() || 'Player 1';
-        player2 = document.getElementById('player-2').value.trim() || 'Player 2';
+        player1 = document.getElementById('player1').value.trim() || 'Player 1';
+        player2 = document.getElementById('player2').value.trim() || 'Player 2';
         
         if (player1 && player2) {
             currentPlayer = player1;
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Check for win or draw
         if (checkWin()) {
-            messageDiv.textContent = `${currentPlayer}, congratulations you won!`;
+            messageDiv.textContent = `${currentPlayer === player1 ? player1 : player2} congratulations you won!`;
             gameActive = false;
             return;
         }
