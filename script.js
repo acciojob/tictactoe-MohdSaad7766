@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             gameActive = true;
             inputSection.classList.add('hidden');
             gameSection.classList.remove('hidden');
-            messageDiv.textContent = `${currentPlayer}, you're up (X)`;
+            messageDiv.textContent = `${currentPlayer}, you're up`;
         }
     });
     
@@ -43,14 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
         
-        // Update board state and UI
-        const symbol = currentPlayer === player1 ? 'X' : 'O';
+        // Update board state and UI - using lowercase x and o
+        const symbol = currentPlayer === player1 ? 'x' : 'o';
         boardState[cellIndex] = symbol;
         cell.textContent = symbol;
         
         // Check for win or draw
         if (checkWin()) {
-            messageDiv.textContent = `${currentPlayer === player1 ? player1 : player2} congratulations you won!`;
+            messageDiv.textContent = `${currentPlayer} congratulations you won!`;
             gameActive = false;
             return;
         }
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Switch player
         currentPlayer = currentPlayer === player1 ? player2 : player1;
-        messageDiv.textContent = `${currentPlayer}, you're up (${currentPlayer === player1 ? 'X' : 'O'})`;
+        messageDiv.textContent = `${currentPlayer}, you're up`;
     }
     
     // Check for win conditions
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         return winConditions.some(condition => {
             return condition.every(index => {
-                return boardState[index] === (currentPlayer === player1 ? 'X' : 'O');
+                return boardState[index] === (currentPlayer === player1 ? 'x' : 'o');
             });
         });
     }
